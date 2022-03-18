@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-03-2022 a las 04:53:16
+-- Tiempo de generación: 16-03-2022 a las 05:56:59
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.1.3
 
@@ -30,7 +30,7 @@ USE `veterinaria`;
 --
 
 CREATE TABLE `citas` (
-  `id_citas` int(11) NOT NULL,
+  `id_cita` int(11) NOT NULL,
   `id_registro_animal` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `hora` datetime NOT NULL,
@@ -115,7 +115,7 @@ CREATE TABLE `recetas` (
 --
 
 CREATE TABLE `registro_animales` (
-  `id_registro_animales` int(11) NOT NULL,
+  `id_registro_animal` int(11) NOT NULL,
   `nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `especie` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   `sexo` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
@@ -190,7 +190,7 @@ CREATE TABLE `usuarios` (
 -- Indices de la tabla `citas`
 --
 ALTER TABLE `citas`
-  ADD PRIMARY KEY (`id_citas`),
+  ADD PRIMARY KEY (`id_cita`),
   ADD KEY `id_registro_animal` (`id_registro_animal`),
   ADD KEY `id_tipo_cita` (`id_tipo_cita`);
 
@@ -232,7 +232,7 @@ ALTER TABLE `recetas`
 -- Indices de la tabla `registro_animales`
 --
 ALTER TABLE `registro_animales`
-  ADD PRIMARY KEY (`id_registro_animales`),
+  ADD PRIMARY KEY (`id_registro_animal`),
   ADD KEY `id_propietario` (`id_propietario`);
 
 --
@@ -269,7 +269,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id_citas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `consultas`
@@ -299,7 +299,7 @@ ALTER TABLE `recetas`
 -- AUTO_INCREMENT de la tabla `registro_animales`
 --
 ALTER TABLE `registro_animales`
-  MODIFY `id_registro_animales` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_registro_animal` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `servicios`
@@ -333,14 +333,14 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `citas`
 --
 ALTER TABLE `citas`
-  ADD CONSTRAINT `citas_ibfk_1` FOREIGN KEY (`id_registro_animal`) REFERENCES `registro_animales` (`id_registro_animales`),
-  ADD CONSTRAINT `citas_ibfk_2` FOREIGN KEY (`id_tipo_cita`) REFERENCES `tipos_cita` (`id_tipo_cita`);
+  ADD CONSTRAINT `citas_ibfk_2` FOREIGN KEY (`id_tipo_cita`) REFERENCES `tipos_cita` (`id_tipo_cita`),
+  ADD CONSTRAINT `citas_ibfk_3` FOREIGN KEY (`id_registro_animal`) REFERENCES `registro_animales` (`id_registro_animal`);
 
 --
 -- Filtros para la tabla `consultas`
 --
 ALTER TABLE `consultas`
-  ADD CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`id_registro_animal`) REFERENCES `registro_animales` (`id_registro_animales`);
+  ADD CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`id_registro_animal`) REFERENCES `registro_animales` (`id_registro_animal`);
 
 --
 -- Filtros para la tabla `detalle_facturas`
@@ -359,7 +359,7 @@ ALTER TABLE `facturas`
 -- Filtros para la tabla `recetas`
 --
 ALTER TABLE `recetas`
-  ADD CONSTRAINT `recetas_ibfk_1` FOREIGN KEY (`id_registro_animal`) REFERENCES `registro_animales` (`id_registro_animales`);
+  ADD CONSTRAINT `recetas_ibfk_1` FOREIGN KEY (`id_registro_animal`) REFERENCES `registro_animales` (`id_registro_animal`);
 
 --
 -- Filtros para la tabla `registro_animales`
