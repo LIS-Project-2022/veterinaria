@@ -1,5 +1,4 @@
 <?php
-    require_once '../helpers/validator.class.php';
     class Usuario extends Validator{
         private $id_usuario = null;
         private $nombres = null;
