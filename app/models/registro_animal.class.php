@@ -172,7 +172,7 @@
             return $this->estado;
         }
 
-        public function get(){}
+        public function getAnimales(){}
         public function create(){}
         public function update(){}
         public function delete(){}
