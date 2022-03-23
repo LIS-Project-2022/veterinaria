@@ -8,12 +8,12 @@
         private $usuario = null;
         private $password = null;
         private $id_tipo_usuario = null;
-        private $token = null;
-        private $estado = null;
+        private $token = 0;
+        private $estado = 1;
 
         public function setIdUsuario($value)
         {
-            if(validateId($value))
+            if($this->validateId($value))
             {
                 $this->id_usuario = $value;
                 return true;
@@ -31,7 +31,7 @@
 
         public function setNombres($value)
         {
-            if(validateAlphabetic($value, 1, 50))
+            if($this->validateAlphabetic($value, 1, 50))
             {
                 $this->nombres = $value;
                 return true;
@@ -49,7 +49,7 @@
 
         public function setApellidos($value)
         {
-            if(validateAlphabetic($value, 1, 50))
+            if($this->validateAlphabetic($value, 1, 50))
             {
                 $this->apellidos = $value;
                 return true;
@@ -67,7 +67,7 @@
 
         public function setCorreo($value)
         {
-            if(validateEmail($value))
+            if($this->validateEmail($value))
             {
                 $this->correo = $value;
                 return true;
@@ -85,7 +85,7 @@
 
         public function setTelefono($value)
         {
-            if(validatePhone($value))
+            if($this->validatePhone($value))
             {
                 $this->telefono = $value;
                 return true;
@@ -103,7 +103,7 @@
 
         public function setUsuario($value)
         {
-            if(validateAlphanumeric($value, 1, 50))
+            if($this->validateAlphanumeric($value, 1, 50))
             {
                 $this->usuario = $value;
                 return true;
@@ -121,7 +121,7 @@
 
         public function setPassword($value)
         {
-            if(validateAlphanumeric($value, 1, 60))
+            if($this->validateAlphanumeric($value, 1, 60))
             {
                 $this->password = $value;
                 return true;
@@ -139,7 +139,7 @@
         
         public function setIdTipoUsuario($value)
         {
-            if(validateId($value))
+            if($this->validateId($value))
             {
                 $this->id_tipo_usuario = $value;
                 return true;
@@ -157,7 +157,7 @@
 
         public function setToken($value)
         {
-            if(validateAlphanumeric($value, 1, 200))
+            if($this->validateAlphanumeric($value, 1, 200))
             {
                 $this->token = $value;
                 return true;
@@ -191,9 +191,60 @@
             return $this->estado;
         }
 
-        public function get(){}
-        public function create(){}
-        public function update(){}
-        public function delete(){}
+        public function getTiposUsuario()
+        {
+            $query = "SELECT id_tipo_usuario, tipo_usuario FROM tipos_usuario WHERE estado = 1";
+            $params = array();
+            return Database::getRows($query, $params);
+        }
+
+        public function getUsuarios()
+        {
+            $query = "SELECT id_usuario, nombres, apellidos, correo, usuario, telefono FROM usuarios WHERE estado = 1";
+            $params = array();
+            return Database::getRows($query, $params);
+        }
+
+        public function getUsuarioForId()
+        {
+            $query = "SELECT nombres, apellidos, correo, usuario, telefono, id_tipo_usuario FROM usuarios WHERE id_usuario = ?";
+            $params = array($this->id_usuario);
+            $usuarioI = Database::getRow($query, $params);
+            if($usuarioI)
+            {
+                $this->nombres = $usuarioI['nombres'];
+                $this->apellidos = $usuarioI['apellidos'];
+                $this->correo = $usuarioI['correo'];
+                $this->usuario = $usuarioI['usuario'];
+                $this->telefono = $usuarioI['telefono'];
+                $this->id_tipo_usuario = $usuarioI['id_tipo_usuario'];
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public function create()
+        {
+            $query = "INSERT usuarios(nombres, apellidos, correo, telefono, usuario, password, id_tipo_usuario, token, estado) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $params = array($this->nombres, $this->apellidos, $this->correo, $this->telefono, $this->usuario, $this->password, $this->id_tipo_usuario, $this->token, $this->estado);
+            return Database::executeRow($query, $params);
+        }
+        
+        public function update()
+        {
+            $query = "UPDATE usuarios SET nombres = ?, apellidos = ?, correo = ?, telefono = ?, usuario = ?, password = ?, id_tipo_usuario = ? WHERE id_usuario = ?";
+            $params = array($this->nombres, $this->apellidos, $this->correo, $this->telefono, $this->usuario, $this->password, $this->id_tipo_usuario, $this->id_usuario);
+            return Database::executeRow($query, $params);
+        }
+        public function delete()
+        {
+            $query = "UPDATE usuarios SET estado = 0 WHERE id_usuario = ?";
+            $params = array($this->id_usuario);
+            return Database::executeRow($query, $params);
+        }
     }
 ?>
