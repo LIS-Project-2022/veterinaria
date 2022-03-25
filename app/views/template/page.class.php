@@ -71,6 +71,8 @@
 
         public static function sidenav()
         {
+            $url = $_SERVER['REQUEST_URI'];
+            $urlArr = explode('/', $url);
             require_once '../../app/views/template/sidenav.php';
         }
     }

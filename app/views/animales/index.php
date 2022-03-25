@@ -1,4 +1,4 @@
 <?php 
-    Page::dataTable(['Id', 'Nombres', 'Apellidos', 'Correo', 'Usuario', 'Telefono', 'Acciones'], $usuarios);
+    Page::dataTable(['Id', 'Nombre', 'Propietario', 'Telefono', 'Sexo', 'Especie', 'Acciones'], $animales);
     Page::buttonRound('');
 ?>

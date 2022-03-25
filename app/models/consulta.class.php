@@ -18,7 +18,7 @@
         //METODO SET DE ID_CONSULTA
         public function setIdConsulta($value)
         {
-            if(validateId($value))
+            if($this->validateId($value))
             {
                 $this->id_consulta = $value;
                 return true;
@@ -41,7 +41,7 @@
         //METODO SET DE DIAGNOSTICO
         public function setDiagnostico($value)
         {
-            if(validateAlphanumeric($value, 1, 1000))
+            if($this->validateAlphanumeric($value, 1, 1000))
             {
                 $this->diagnostico = $value;
                 return true;
@@ -64,7 +64,7 @@
         //METODO SET DE FECHA
         public function setFecha($value)
         {
-            if(validateFecha($value))
+            if($this->validateFecha($value))
             {
                 $this->fecha = $value;
                 return true;
@@ -87,7 +87,7 @@
         //METODO SET DE ID_REGISTRO_ANIMAL
         public function setIdRegistroAnimal($value)
         {
-            if(validateId($value))
+            if($this->validateId($value))
             {
                 $this->id_registro_animal = $value;
                 return true;
@@ -110,7 +110,7 @@
         //METODO SET DE PESO
         public function setPeso($value)
         {
-            if(validateDecimal($value))
+            if($this->validateDecimal($value))
             {
                 $this->peso = $value;
                 return true;
@@ -133,7 +133,7 @@
         //METODO SET DE ESTADO
         public function setEstado($value)
         {
-            if(validateEstado($value))
+            if($this->validateEstado($value))
             {
                 $this->estado = $value;
                 return true;

@@ -9,7 +9,7 @@
 
         public function setIdTipoUsuario($value)
         {
-            if(validateId($value))
+            if($this->validateId($value))
             {
                 $this->id_tipo_usuario = $value;
                 return true;
@@ -27,7 +27,7 @@
 
         public function setTipoUsuario($value)
         {
-            if(validateAlphabetic($value, 1, 50))
+            if($this->validateAlphabetic($value, 1, 50))
             {
                 $this->tipo_usuario = $value;
                 return true;
@@ -45,7 +45,7 @@
 
         public function setEstado($value)
         {
-            if(validateEstado($value))
+            if($this->validateEstado($value))
             {
                 $this->estado = $value;
                 return true;
