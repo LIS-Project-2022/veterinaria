@@ -13,7 +13,7 @@
                     Usuario <i class="bi bi-person-circle"></i>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Editar Perfil</a></li>
+                    <li><a class="dropdown-item" href="../perfil/update.php">Editar Perfil</a></li>
                     <li><a class="dropdown-item" href="#">Cambiar Contraseña</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
