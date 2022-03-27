@@ -5,7 +5,7 @@
                 <a href="../home"><i class="bi bi-house-door-fill"></i>Home</a>
             </li>
             <li class='sidenav-item-sav <?=$urlArr[3] === 'animales'? 'active' : ''?>'> 
-                <a href="../animales"><i class="bi bi-house-door-fill"></i>Registro de animales</a>
+                <a href="../animales"><i class="bi bi-clipboard2-pulse"></i>Registro de animales</a>
             </li>
             <li class='sidenav-item-sav <?=$urlArr[3] === 'usuarios'? 'active' : ''?>'>
                 <a href="../usuarios"> <i class="bi bi-people-fill"></i>Usuarios</a>
