@@ -14,7 +14,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="../perfil/update.php">Editar Perfil</a></li>
-                    <li><a class="dropdown-item" href="#">Cambiar Contraseña</a></li>
+                    <li><a class="dropdown-item" href="../perfil/cambiar-clave.php">Cambiar Contraseña</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
                 </ul>
