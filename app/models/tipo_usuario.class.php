@@ -38,9 +38,11 @@
             }
         }
 
-        public function getTipoUsuario()
+        public function getTipoUsuarios()
         {
-            return $this->tipo_usuario;
+            $query = "SELECT * FROM tipos_usuario ";
+            $params = array();
+            return Database::getRows($query, $params);
         }
 
         public function setEstado($value)
@@ -64,11 +66,26 @@
 
         public function get(){}
 
-        public function create(){}
-
-        public function update(){}
-
-        public function delete(){}
+        public function create()
+        {
+            $query = "INSERT tipos_usuario(id_tipo_usuario, tipo_usuario, estado) 
+            VALUES (?, ?, ?)";
+            $params = array($this->id_tipo_usuario, $this->tipo_usuario, $this->estado);
+            return Database::executeRow($query, $params);
+        }
+        
+        public function update()
+        {
+            $query = "UPDATE tipos SET id_tipo_usuario = ?, tipo_usuario = ?, estado = ? WHERE id_tipo_usuario = ?";
+            $params = array($this->id_tipo_usuario, $this->tipo_usuario, $this->estado);
+            return Database::executeRow($query, $params);
+        }
+        public function delete()
+        {
+            $query = "UPDATE tipos_usuario SET estado = 0 WHERE id_tipo_usuario = ?";
+            $params = array($this->id_tipo_usuario);
+            return Database::executeRow($query, $params);
+        }
     }
 
 ?>
