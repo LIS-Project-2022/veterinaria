@@ -104,6 +104,29 @@
             ");
         }
 
+        //FUNCION PARA GENERAR LA CARD DE LA PANTALLA DELETE.PHP
+        public static function cardDelete($title, $message)
+        {
+            print("
+            <div class='container-delete-sav'>
+                <div class='col-sm-12'>
+                    <div class='card card-sav'>
+                        <div class='card-body'>
+                            <h2 class='card-title text-center mt-3'>$title</h2>
+                            <h4 class='card-text text-center mt-4'>$message</h4>
+                            <div class='d-flex justify-content-center mt-4'>
+                                <form method='POST'>
+                                    <button type='submit' name='eliminar' class='btn btn-eliminar me-3'>Eliminar</button>
+                                </form>
+                                <a class='btn btn-cancelar' href='index.php' role='button'>Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            ");
+        }
+
         //FUNCION PARA LAS ALERTAS CON SWEETALERT
         public static function showMessage($type, $message, $url)
         {

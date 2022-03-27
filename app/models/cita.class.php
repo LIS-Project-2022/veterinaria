@@ -18,7 +18,7 @@
         //METODO SET DE ID_CITA
         public function setIdCita($value)
         {
-            if(validateId($value))
+            if($this->validateId($value))
             {
                 $this->id_cita = $value;
                 return true;
@@ -41,7 +41,7 @@
         //METODO SET DE ID_REGISTRO_ANIMAL
         public function setIdRegistroAnimal($value)
         {
-            if(validateId($value))
+            if($this->validateId($value))
             {
                 $this->id_registro_animal = $value;
                 return true;
@@ -64,7 +64,7 @@
         //METODO SET DE FECHA
         public function setFecha($value)
         {
-            if(validateFecha($value))
+            if($this->validateFecha($value))
             {
                 $this->fecha = $value;
                 return true;
@@ -87,7 +87,7 @@
         //METODO SET DE HORA
         public function setHora($value)
         {
-            if(validateFecha($value))
+            if($this->validateFecha($value))
             {
                 $this->hora = $value;
                 return true;
@@ -110,7 +110,7 @@
         //METODO SET DE ID_TIPO_CITA
         public function setIdTipoFecha($value)
         {
-            if(validateId($value))
+            if($this->validateId($value))
             {
                 $this->id_tipo_cita = $value;
                 return true;
@@ -133,7 +133,7 @@
         //METODO SET DE ESTADO
         public function setEstado($value)
         {
-            if(validateFecha($value))
+            if($this->validateFecha($value))
             {
                 $this->estado = $value;
                 return true;

@@ -12,7 +12,7 @@
 
         public function setIdRegistroAnimal($value)
         {
-            if(validateId($value))
+            if($this->validateId($value))
             {
                 $this->id_registro_animal = $value;
                 return true;
@@ -30,7 +30,7 @@
 
         public function setNombre($value)
         {
-            if(validateAlphabetic($value, 1, 50))
+            if($this->validateAlphabetic($value, 1, 50))
             {
                 $this->nombre = $value;
                 return true;
@@ -48,7 +48,7 @@
 
         public function setEspecie($value)
         {
-            if(validateAlphabetic($value, 1, 25))
+            if($this->validateAlphabetic($value, 1, 25))
             {
                 $this->especie = $value;
                 return true;
@@ -66,7 +66,7 @@
 
         public function setSexo($value)
         {
-            if(validateAlphabetic($value, 1, 15))
+            if($this->validateAlphabetic($value, 1, 15))
             {
                 $this->sexo = $value;
                 return true;
@@ -84,7 +84,7 @@
 
         public function setRaza($value)
         {
-            if(validateAlphabetic($value, 1, 25))
+            if($this->validateAlphabetic($value, 1, 25))
             {
                 $this->raza = $value;
                 return true;
@@ -102,7 +102,7 @@
 
         public function setColor($value)
         {
-            if(validateAlphabetic($value, 1, 25))
+            if($this->validateAlphabetic($value, 1, 25))
             {
                 $this->color = $value;
                 return true;
@@ -120,7 +120,7 @@
 
         public function setFechaNaci($value)
         {
-            if(validateFecha($value))
+            if($this->validateFecha($value))
             {
                 $this->fecha_naci = $value;
                 return true;
@@ -138,7 +138,7 @@
 
         public function setIdPropietario($value)
         {
-            if(validateId($value))
+            if($this->validateId($value))
             {
                 $this->id_propietario = $value;
                 return true;
@@ -156,7 +156,7 @@
 
         public function setEstado($value)
         {
-            if(validateEstado($value))
+            if($this->validateEstado($value))
             {
                 $this->estado = $value;
                 return true;
@@ -172,9 +172,54 @@
             return $this->estado;
         }
 
-        public function get(){}
-        public function create(){}
-        public function update(){}
-        public function delete(){}
+        public function getAnimales()
+        {
+            $query = "SELECT RA.id_registro_animal, RA.nombre, CONCAT(P.nombres, ' ', P.apellidos), P.telefono, RA.sexo, RA.especie FROM registro_animales RA 
+            INNER JOIN propietarios P ON RA.id_propietario = P.id_propietario WHERE RA.estado = 1";
+            $params = array();
+            return Database::getRows($query, $params);
+        }
+
+        public function getAnimal()
+        {
+            $query = "SELECT nombre, sexo, especie, raza, color, fecha_naci, id_propietario FROM registro_animales WHERE id_registro_animal = ?";
+            $params = array($this->id_registro_animal);
+            $animal = Database::getRow($query, $params);
+            if($animal)
+            {
+                $this->id_propietario = $animal['id_propietario'];
+                $this->nombre = $animal['nombre'];
+                $this->especie = $animal['especie'];
+                $this->sexo = $animal['sexo'];
+                $this->raza = $animal['raza'];
+                $this->color = $animal['color'];
+                $this->fecha_naci = $animal['fecha_naci'];
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public function create()
+        {
+            $query = "INSERT registro_animales(nombre, especie, sexo, raza, color, fecha_naci, id_propietario) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $params = array($this->nombre, $this->especie, $this->sexo, $this->raza, $this->color, $this->fecha_naci, $this->id_propietario);
+            return Database::executeRow($query, $params);
+        }
+        public function update()
+        {
+            $query = "UPDATE registro_animales SET nombre = ?, especie = ?, sexo = ?, raza = ?, color = ?, fecha_naci = ? WHERE id_registro_animal = ?";
+            $params = array($this->nombre, $this->especie, $this->sexo, $this->raza, $this->color, $this->fecha_naci, $this->id_registro_animal);
+            return Database::executeRow($query, $params);
+        }
+
+        public function delete()
+        {
+            $query = "UPDATE registro_animales SET estado = 0 WHERE id_registro_animal = ?";
+            $params = array($this->id_registro_animal);
+            return Database::executeRow($query, $params);
+        }
     }
 ?>

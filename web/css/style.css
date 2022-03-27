@@ -1,7 +1,8 @@
-:root {
-  --blue-dark: #293d55;
-  --white: #ffffff;
-  --grey: rgba(207, 206, 206, 0.6);
+
+:root{
+    --blue-dark: #293D55;
+    --white: #FFFFFF;
+    --grey: rgba(207, 206, 206, 1);
 }
 
 .dropdown-menu.show {
@@ -9,12 +10,17 @@
   left: inherit !important;
 }
 
-.navbar-sav {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  background: var(--grey);
-  height: 60px;
+
+header{
+    position: sticky;
+    top: 0;
+}
+
+.navbar-sav{
+    display: flex;
+    justify-content: space-between;
+    background: var(--grey);
+    height: 60px;
 }
 
 .navbar-contain-title {
@@ -33,12 +39,13 @@
   color: #ffffff;
 }
 
-.navbar-content-sav {
-  width: calc(100vw - 300px);
-  /* background: coral; */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+.navbar-content-sav{
+    width: calc(100% - 300px);
+    /* background: coral; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar-item-sav {
@@ -83,9 +90,16 @@
   background: var(--grey);
 }
 
-.sidenav-item-sav i {
-  color: white;
-  margin-right: 1.5rem;
+
+.sidenav-item-sav a{
+    text-decoration: none !important;
+    color: white !important;
+    width: 100%;
+}
+
+.sidenav-item-sav a i{
+    color: white;
+    margin-right: 1.5rem;
 }
 
 .container-sav {

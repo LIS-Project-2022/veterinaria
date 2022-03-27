@@ -1,25 +1,23 @@
 <?php
     require_once('../../app/models/usuario.class.php');
-
     try
     {
         $usuario = new Usuario;
-        if(!isset($_GET['id']))
-        {
-            Page::showMessage(2, 'Seleccione un usuario', 'index.php');
-        }
-        else if(!$usuario->setIdUsuario($_GET['id']))
-        {
-            Page::showMessage(2, 'El id de usuario no es valido', 'index.php');
-        }
-        else if(!$usuario->getUsuarioForId())
-        {
-            Page::showMessage(2, 'El usuario no existe', 'index.php');
-        }
-        else
-        {
+        // util solo mientras no esta la autenticación
+        session_start();
+        $_SESSION["idUser"] = '1';
+        $idUser = $_SESSION['idUser'];
+        if($idUser != ''){
             $tiposUsuario = $usuario->getTiposUsuario();
-            require_once('../../app/views/usuarios/update.php');
+            if(!$usuario->setIdUsuario($idUser))
+            {
+                Page::showMessage(2, 'El id de usuario no es valido', 'update.php');
+            }
+            if(!$usuario->getUsuarioForId())
+            {
+                Page::showMessage(2, 'El usuario no existe', 'index.php');
+            }
+            require_once('../../app/views/perfil/perfil.php');
             if(isset($_POST['modificar']))
             {
                 $_POST = $usuario->validateForm($_POST);
@@ -57,7 +55,7 @@
                 {
                     if($usuario->update())
                     {
-                        Page::showMessage(1, "Usuario modificado", "index.php");
+                        Page::showMessage(1, "Usuario modificado", "update.php");
                     }
                     else
                     {
@@ -65,12 +63,14 @@
                     }
                 }
             }
+        }else{
+            echo("<h1 class='text-center'>El usuario no esta autenticado no puede ver el perfil<h1>");
         }
+        
     }
-    catch (Exception $error)
+    catch(Exception $error)
     {
-        Page::showMessage(3, $error->getMessage(), '');
+        Page::showMessage(2, $error->getMessage(), "");
     }
-
     
 ?>
