@@ -81,7 +81,7 @@
         public function update()
         {
             $query = "UPDATE tipos_usuario SET tipo_usuario = ?, estado = ? WHERE id_tipo_usuario = ?";
-            $params = array($this->id_tipo_usuario, $this->tipo_usuario, $this->estado);
+            $params = array($this->tipo_usuario, $this->estado, $this->id_tipo_usuario);
             return Database::executeRow($query, $params);
         }
         public function delete()
