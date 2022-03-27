@@ -7,5 +7,6 @@
     // echo $controller;
     // echo $method;
     // echo $params;
-    header('location: dashboard/usuarios/');
+    // header('location: dashboard/usuarios/');
+    header('location: public/login.php');
 ?>
