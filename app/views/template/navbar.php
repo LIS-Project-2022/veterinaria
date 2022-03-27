@@ -1,6 +1,6 @@
 <nav class='navbar-sav'>
     <div class='navbar-contain-title'>
-        <a class='navbar-title-sav' href="#">PET ZONA</a>
+        <a class='navbar-title-sav' href="../home">PET ZONA</a>
     </div>
 
     <div class='navbar-content-sav'>
