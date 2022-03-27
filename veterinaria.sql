@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-03-2022 a las 05:56:59
+-- Tiempo de generación: 24-03-2022 a las 00:32:53
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.1.3
 
@@ -163,6 +163,15 @@ CREATE TABLE `tipos_usuario` (
   `estado` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `tipos_usuario`
+--
+
+INSERT INTO `tipos_usuario` (`id_tipo_usuario`, `tipo_usuario`, `estado`) VALUES
+(1, 'Administrador', 1),
+(2, 'Doctor', 1),
+(3, 'Recepcionista', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -181,6 +190,13 @@ CREATE TABLE `usuarios` (
   `token` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `estado` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `nombres`, `apellidos`, `correo`, `telefono`, `usuario`, `password`, `id_tipo_usuario`, `token`, `estado`) VALUES
+(1, 'Fernando Xavier', 'Maldonado Canjura', 'xavier6@gmail.com', 12345678, 'Xavier6', '', 1, '0', 1);
 
 --
 -- Índices para tablas volcadas
@@ -317,13 +333,13 @@ ALTER TABLE `tipos_cita`
 -- AUTO_INCREMENT de la tabla `tipos_usuario`
 --
 ALTER TABLE `tipos_usuario`
-  MODIFY `id_tipo_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipo_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas

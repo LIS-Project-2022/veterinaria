@@ -41,7 +41,7 @@
             return $state;
         }
 
-        //FUNCION PARA OBTENER UNA SOLA FILA CUANDO SE HACE UN SELECT
+        //IMPORTANT FUNCION PARA OBTENER UNA SOLA FILA CUANDO SE HACE UN SELECT
         public static function getRow($query, $values)
         {
             self::connect();

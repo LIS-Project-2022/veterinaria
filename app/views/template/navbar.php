@@ -16,7 +16,7 @@
                     <li><a class="dropdown-item" href="#">Editar Perfil</a></li>
                     <li><a class="dropdown-item" href="#">Cambiar Contraseña</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
+                    <li><a class="dropdown-item" href="../../app/controllers/usuarios/logout_controller.php">Cerrar Sesion</a></li>
                 </ul>
             </li>
         </ul>
