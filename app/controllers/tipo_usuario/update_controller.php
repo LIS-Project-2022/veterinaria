@@ -18,7 +18,6 @@
         }
         else
         {
-            $tiposUsuario = $tipo_usuario->getTipoUsuarios();
             require_once('../../app/views/tipo_usuario/update.php');
             if(isset($_POST['modificar']))
             {

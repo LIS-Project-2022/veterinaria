@@ -44,6 +44,10 @@
             $params = array();
             return Database::getRows($query, $params);
         }
+        public function getTipoUsuario()
+        {
+            $this->tipo_usuario;
+        }
 
         public function setEstado($value)
         {
@@ -62,7 +66,7 @@
         {
             return $this->estado;
         }
-
+     
 
         public function get(){}
 
@@ -76,7 +80,7 @@
         
         public function update()
         {
-            $query = "UPDATE tipos SET id_tipo_usuario = ?, tipo_usuario = ?, estado = ? WHERE id_tipo_usuario = ?";
+            $query = "UPDATE tipos_usuario SET tipo_usuario = ?, estado = ? WHERE id_tipo_usuario = ?";
             $params = array($this->id_tipo_usuario, $this->tipo_usuario, $this->estado);
             return Database::executeRow($query, $params);
         }
