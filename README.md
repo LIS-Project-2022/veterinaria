@@ -1,4 +1,21 @@
 # Sistema Administrativo para Veterinarias
+Sistema web creado usando PHP para la materia de Lenguajes Interpretados en el Servidor de la Universidad Don Bosco
+
+### Colaboradores
+Todos los colaboradores son el grupo teórico 02
+- [Williams Ernesto Amaya Moreno](https://github.com/whistemalo) - Programación, diseño y manuales
+- [Fernando Xavier Maldonado Canjura](https://github.com/XavierCanjura) - Programación, diseño y manuales
+- [Rubida Estefany Paz García](https://github.com/RubidiaPaz) - Programación, diseño y manuales
+- [Osmaro Alfonso Bonilla Mestízo](https://github.com/OsmaroB) - Programación, diseño y manuales
+- [Saúl Alejandro Laínez Mejía](https://github.com/Saul19-L98) - Programación, diseño y manuales
+
+### Enlaces de Interés
+- [Espacio de Trabajo en Trello](https://trello.com/saveterinaria)
+- [Mockups](https://www.figma.com/file/n5AbKDBX6R05u9d3xuvo8I/Sistema-de-Veterinaria?node-id=0%3A1)
+- [Documento de Fase 1](https://drive.google.com/drive/folders/1TV6U9aO6cQiitYZT5icuUxAPKyqwYegV?usp=sharing)
+- [Manual de Usuario](https://drive.google.com/drive/folders/1TV6U9aO6cQiitYZT5icuUxAPKyqwYegV?usp=sharing)
+- [Manual de Tecnico](https://drive.google.com/drive/folders/1TV6U9aO6cQiitYZT5icuUxAPKyqwYegV?usp=sharing)
+- [Video Fase 1](https://drive.google.com/drive/folders/1TV6U9aO6cQiitYZT5icuUxAPKyqwYegV?usp=sharing)
 
 ### Licencia
 ------------
