@@ -23,7 +23,7 @@
       <div class="row" style="justify-content: center;">
         
         <div class="col-xl-3 col-md-3 col-sm-6 col-xs-6 servicios_style">
-          <a href="../recetas"><img class="card-img-top" src="../../web/img/receta.png" alt="Recetas"></a>     
+          <a href="../recetas"><img class="card-img-top" src="../../web/img/receta.png"  alt="Recetas"></a>     
         </div>
 
             <div class="col-xl-3 col-md-3 col-sm-6 col-xs-6 servicios_style">
