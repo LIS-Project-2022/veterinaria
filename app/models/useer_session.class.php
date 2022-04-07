@@ -4,7 +4,7 @@
             session_start();
         }
         public function setCurrentUser($user){
-            $ _SESSION ['user'] = $user;
+            $_SESSION ['user'] = $user;
         }
 
         public function getCurrentUser(){
