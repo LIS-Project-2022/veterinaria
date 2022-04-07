@@ -7,6 +7,7 @@
         private $telefono = null;
         private $usuario = null;
         private $password = null;
+        private $newPassword = null;
         private $id_tipo_usuario = null;
         private $token = 0;
         private $estado = 1;
@@ -132,6 +133,18 @@
             }
         }
 
+        public function setNewPassword($value){
+            if($this->validateAlphanumeric($value, 1, 60))
+            {
+                $this->newPassword = $value;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public function getPassword()
         {
             return $this->password;
@@ -238,6 +251,12 @@
         {
             $query = "UPDATE usuarios SET nombres = ?, apellidos = ?, correo = ?, telefono = ?, usuario = ?, password = ?, id_tipo_usuario = ? WHERE id_usuario = ?";
             $params = array($this->nombres, $this->apellidos, $this->correo, $this->telefono, $this->usuario, $this->password, $this->id_tipo_usuario, $this->id_usuario);
+            return Database::executeRow($query, $params);
+        }
+
+        public function changePassword(){
+            $query = "UPDATE usuarios SET password = ? WHERE id_usuario = ? AND password = ?";
+            $params = array($this->newPassword, $this->id_usuario, $this->password);
             return Database::executeRow($query, $params);
         }
         public function delete()

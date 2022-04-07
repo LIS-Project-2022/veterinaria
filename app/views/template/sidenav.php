@@ -10,6 +10,9 @@
             <li class='sidenav-item-sav <?=$urlArr[3] === 'usuarios'? 'active' : ''?>'>
                 <a href="../usuarios"> <i class="bi bi-people-fill"></i>Usuarios</a>
             </li>
+            <li class='sidenav-item-sav <?=$urlArr[3] === 'tipo_usuario'? 'active' : ''?>'>
+                <a href="../tipo_usuario"> <i class="bi bi-people-fill"></i>Tipos de usuario</a>
+            </li>
             <li class='sidenav-item-sav <?=$urlArr[3] === 'consultas'? 'active' : ''?>'>
                 <a href="../consultas"><i class="bi bi-heart-pulse"></i>Consultas</a>
             </li>
