@@ -5,7 +5,7 @@
         //-----------------------------------------------------------------------------------------------------------------
         private $id_tipo_usuario = null;
         private $tipo_usuario = null;
-        private $estado = null;
+        private $estado = 1;
 
         public function setIdTipoUsuario($value)
         {
@@ -40,7 +40,7 @@
 
         public function getTipoUsuarios()
         {
-            $query = "SELECT * FROM tipos_usuario ";
+            $query = "SELECT id_tipo_usuario, tipo_usuario FROM tipos_usuario WHERE estado = 1";
             $params = array();
             return Database::getRows($query, $params);
         }
@@ -72,9 +72,9 @@
 
         public function create()
         {
-            $query = "INSERT tipos_usuario(id_tipo_usuario, tipo_usuario, estado) 
-            VALUES (?, ?, ?)";
-            $params = array($this->id_tipo_usuario, $this->tipo_usuario, $this->estado);
+            $query = "INSERT tipos_usuario( tipo_usuario, estado) 
+            VALUES (?, ?)";
+            $params = array($this->tipo_usuario, $this->estado);
             return Database::executeRow($query, $params);
         }
         

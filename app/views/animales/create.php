@@ -11,9 +11,9 @@
         <h5>Información de animal</h5>
         <?php
             Page::textInput('Nombre', 'nombre_a', isset($_POST['nombre_a']) ? $_POST['nombre_a'] : '', 'Ingrese el nombre', 'text');
-            Page::textInput('Sexo', 'sexo', isset($_POST['sexo']) ? $_POST['sexo'] : '', 'Ingrese el sexo', 'text');
-            Page::textInput('Especie', 'especie', isset($_POST['especie']) ? $_POST['especie'] : '', 'Ingrese la especie', 'text');
-            Page::textInput('Raza', 'raza', isset($_POST['raza']) ? $_POST['raza'] : '', 'Ingrese el sexo', 'text');
+            Page::textInput('Sexo', 'sexo', isset($_POST['sexo']) ? $_POST['sexo'] : '', 'Ingrese el sexo', 'text'); //TO do: Cambiar a select, options Macho y Hembra
+            Page::textInput('Especie', 'especie', isset($_POST['especie']) ? $_POST['especie'] : '', 'Ingrese la especie', 'text'); //To do: cambiar a select, options Canino y felino
+            Page::textInput('Raza', 'raza', isset($_POST['raza']) ? $_POST['raza'] : '', 'Ingrese el raza', 'text');
             Page::textInput('Color', 'color', isset($_POST['color']) ? $_POST['color'] : '', 'Ingrese el color', 'text');
             Page::textInput('Fecha de nacimiento', 'fecha_naci', isset($_POST['fecha_naci']) ? $_POST['fecha_naci'] : '', 'Ingrese la fecha de nacimiento', 'date');
         ?>
