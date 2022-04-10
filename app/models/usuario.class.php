@@ -204,6 +204,7 @@
             return $this->estado;
         }
 
+        //METODOS PARA CRUD DE USUARIO
         public function getTiposUsuario()
         {
             $query = "SELECT id_tipo_usuario, tipo_usuario FROM tipos_usuario WHERE estado = 1";
@@ -241,22 +242,25 @@
 
         public function create()
         {
+            $hash = password_hash($this->password, PASSWORD_DEFAULT);
             $query = "INSERT usuarios(nombres, apellidos, correo, telefono, usuario, password, id_tipo_usuario, token, estado) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $params = array($this->nombres, $this->apellidos, $this->correo, $this->telefono, $this->usuario, $this->password, $this->id_tipo_usuario, $this->token, $this->estado);
+            $params = array($this->nombres, $this->apellidos, $this->correo, $this->telefono, $this->usuario, $hash, $this->id_tipo_usuario, $this->token, $this->estado);
             return Database::executeRow($query, $params);
         }
         
         public function update()
         {
-            $query = "UPDATE usuarios SET nombres = ?, apellidos = ?, correo = ?, telefono = ?, usuario = ?, password = ?, id_tipo_usuario = ? WHERE id_usuario = ?";
-            $params = array($this->nombres, $this->apellidos, $this->correo, $this->telefono, $this->usuario, $this->password, $this->id_tipo_usuario, $this->id_usuario);
+            $query = "UPDATE usuarios SET nombres = ?, apellidos = ?, correo = ?, telefono = ?, usuario = ?, id_tipo_usuario = ? WHERE id_usuario = ?";
+            $params = array($this->nombres, $this->apellidos, $this->correo, $this->telefono, $this->usuario, $this->id_tipo_usuario, $this->id_usuario);
             return Database::executeRow($query, $params);
         }
 
-        public function changePassword(){
+        public function changePassword()
+        {
+            $hash = password_hash($this->newPassword, PASSWORD_DEFAULT);
             $query = "UPDATE usuarios SET password = ? WHERE id_usuario = ? AND password = ?";
-            $params = array($this->newPassword, $this->id_usuario, $this->password);
+            $params = array($hash, $this->id_usuario, $this->password);
             return Database::executeRow($query, $params);
         }
         public function delete()
@@ -264,6 +268,43 @@
             $query = "UPDATE usuarios SET estado = 0 WHERE id_usuario = ?";
             $params = array($this->id_usuario);
             return Database::executeRow($query, $params);
+        }
+
+        //METODOS PARA EL LOGIN
+
+        public function checkPassword()
+        {
+            $sql = 'SELECT id_usuario, password FROM usuarios WHERE correo = ?';
+            $params= array($this->correo);
+            $user = Database::getRow($sql, $params);
+            if($user)
+            {
+                if(password_verify($this->password, $user['password']))
+                {
+                    $this->id_usuario = $user['id_usuario'];
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public function getInfoSession()
+        {
+            $sql = 'SELECT id_usuario, nombres, apellidos, correo, usuario, id_tipo_usuario, estado FROM usuarios WHERE id_usuario = ?';
+            $params = array($this->id_usuario);
+            return Database::getRow($sql, $params);
+        }
+        
+        public function logout()
+        {
+            return session_destroy();
         }
     }
 ?>

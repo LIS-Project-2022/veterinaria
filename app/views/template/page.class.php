@@ -2,9 +2,14 @@
     require_once('../../app/models/database.class.php');
     require_once('../../app/helpers/validator.class.php');
     require_once('../../app/helpers/component.class.php');
+    session_start();
     class Page extends Component{
         public static function templateHeader($title)
         {
+            if(!isset($_SESSION['auth']))
+            {
+                header('Location: ../../index.php');
+            }
             print("
             <!DOCTYPE html>
             <html lang='es'>
@@ -59,6 +64,33 @@
                     });
                 } );
             </script>
+            </body>
+            </html>
+            ");
+        }
+
+        public static function templateLoginHeader($title)
+        {
+            print("
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset='utf-8'>
+                <title>$title</title>
+                <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+                <link rel='stylesheet' href='../../web/css/login.css'>
+                <link rel='stylesheet' href='../../web/css/bootstrap.min.css'>
+                <script src='../../web/js/sweetalert.min.js'></script>
+            </head>
+            <body>
+                <div class='container'>
+            ");
+        }
+
+        public static function templateLoginFooter()
+        {
+            print("
+                </div>
             </body>
             </html>
             ");

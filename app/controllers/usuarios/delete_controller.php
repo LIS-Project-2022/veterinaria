@@ -1,8 +1,12 @@
 <?php
     require_once('../../app/models/usuario.class.php');
+    require_once('../../app/middleware/auth.class.php');
 
     try
     {
+        //Verifica si es administrador
+        Auth::checkAdmin();
+        
         $usuario = new Usuario;
         if(!isset($_GET['id']))
         {
