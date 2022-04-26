@@ -4,7 +4,6 @@
     {
         $usuario = new Usuario;
         // util solo mientras no esta la autenticación
-        session_start();
         $_SESSION["idUser"] = '1';
         $idUser = $_SESSION['idUser'];
         if($idUser != ''){

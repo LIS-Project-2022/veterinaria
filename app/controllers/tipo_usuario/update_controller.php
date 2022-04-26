@@ -1,8 +1,12 @@
 <?php
     require_once('../../app/models/tipo_usuario.class.php');
+    require_once('../../app/middleware/auth.class.php');
 
     try
     {
+        //Verifica si es administrador
+        Auth::checkAdmin();
+
         $tipo_usuario = new TipoUsuario;
         if(!isset($_GET['id']))
         {
@@ -18,25 +22,16 @@
         }
         else
         {
+            $tipo = $tipo_usuario->getTipoUsuarioForId();
             require_once('../../app/views/tipo_usuario/update.php');
             if(isset($_POST['modificar']))
             {
                 $_POST = $tipo_usuario->validateForm($_POST);
-            // if(!$tipo_usuario->setIdTipoUsuario($_POST['id_tipo_usuario']))
-            // {
-            //     throw new Exception('Ingrese el ID del tipo de usuario solo con numeros');
-            // }
 
-            if(!$tipo_usuario->setTipoUsuario($_POST['tipo_usuario']))
-            {
-                throw new Exception('Ingrese el tipo de usuario solo con letras');
-            }
-
-            // else if(!$tipo_usuario->setEstado($_POST['estado']))
-            // {
-            //     throw new Exception('Ingrese un un estado valido 1-activo 0-inactivo');
-            // }
-
+                if(!$tipo_usuario->setTipoUsuario($_POST['tipo_usuario']))
+                {
+                    throw new Exception('Ingrese el tipo de usuario solo con letras');
+                }
                 else
                 {
                     if($tipo_usuario->update())

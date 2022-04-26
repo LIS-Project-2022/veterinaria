@@ -1,7 +1,11 @@
 Options All -Indexes
 RewriteEngine on
 
-#RewriteCond %{REQUEST_FILENAME} !-d
-#RewriteCond %{REQUEST_FILENAME} !-f
+# Manejo de errores 403 y 404
+ErrorDocument 403 /veterinaria/web/error403.html
+ErrorDocument 404 /veterinaria/web/error404.html
 
-#RewriteRule ^(.*)$ index.php?url=$1
+# Bloquea el accesso a los directorios 
+<IfModule mod_autoindex.c>
+    Options All -Indexes
+</IfModule>
