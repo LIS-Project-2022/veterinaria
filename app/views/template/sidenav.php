@@ -27,7 +27,7 @@
             
             <?php
                 //SIL EL TIPO DE USUARIO ES DOCTOR
-                if($tipo_usuario == 2)
+                if($tipo_usuario == 2 || $tipo_usuario == 1)
                 {
             ?>
                 <li class='sidenav-item-sav <?=$urlArr[3] === 'consultas'? 'active' : ''?>'>

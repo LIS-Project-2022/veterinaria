@@ -37,13 +37,7 @@
                 return false;
             }
         }
-
-        public function getTipoUsuarios()
-        {
-            $query = "SELECT id_tipo_usuario, tipo_usuario FROM tipos_usuario WHERE estado = 1";
-            $params = array();
-            return Database::getRows($query, $params);
-        }
+        
         public function getTipoUsuario()
         {
             $this->tipo_usuario;
@@ -67,6 +61,19 @@
             return $this->estado;
         }
      
+        public function getTipoUsuarios()
+        {
+            $query = "SELECT id_tipo_usuario, tipo_usuario FROM tipos_usuario WHERE estado = 1";
+            $params = array();
+            return Database::getRows($query, $params);
+        }
+
+        public function getTipoUsuarioForId()
+        {
+            $query = "SELECT tipo_usuario FROM tipos_usuario WHERE estado = 1 AND id_tipo_usuario = ?";
+            $params = array($this->id_tipo_usuario);
+            return Database::getRow($query, $params);
+        }
 
         public function get(){}
 

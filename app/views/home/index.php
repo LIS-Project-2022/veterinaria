@@ -6,14 +6,25 @@
             <div class="col-xl-3 col-md-3 col-sm-6 col-xs-6 servicios_style">
               <a href="../animales"><img class="card-img-top" src="../../web/img/registro.png" alt="Registro de Animales"></a>     
             </div>
-
+          <?php
+            if($_SESSION['auth']['id_tipo_usuario'] == 1)
+            {
+          ?>
             <div class="col-xl-3 col-md-3 col-sm-6 col-xs-6 servicios_style">
-                <a href="../usuarios"><img class="card-img-top" src="../../web/img/usuario.png" alt="Usuarios"></a>
+              <a href="../usuarios"><img class="card-img-top" src="../../web/img/usuario.png" alt="Usuarios"></a>
             </div>
+          <?php
+            }
 
+            if($_SESSION['auth']['id_tipo_usuario'] == 1 || $_SESSION['auth']['id_tipo_usuario'] == 2)
+            {
+          ?>
             <div class="col-xl-3 col-md-3 col-sm-6 col-xs-6 servicios_style">
                 <a href="../consultas"><img class="card-img-top" src="../../web/img/consulta.png" alt="Consultas"></a>
             </div>
+          <?php
+            }
+          ?>
       </div>      
   </div> <!-- END DIV CLASS ROW -->
 </div><br> <!-- END DIV CLASS COL MD 12 -->

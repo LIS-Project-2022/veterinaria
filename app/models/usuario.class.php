@@ -306,5 +306,73 @@
         {
             return session_destroy();
         }
+
+        //METODOS PARA EL LOGIN CON GOOGLE
+        public function checkEmail()
+        {
+            $sql = "SELECT id_usuario FROM usuarios WHERE correo = ?";
+            $params = array($this->correo);
+            $user = Database::getRow($sql, $params);
+            if($user)
+            {
+                $this->id_usuario = $user['id_usuario'];
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        //METODOS PARA RECUPERAR PASSWORD
+        public function checkData()
+        {
+            $sql = "SELECT id_usuario FROM usuarios WHERE correo = ? AND usuario = ?";
+            $params = array($this->correo, $this->usuario);
+            $data = Database::getRow($sql, $params);
+            if($data)
+            {
+                $this->id_usuario = $data['id_usuario'];
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public function createToken()
+        {
+            $this->token = bin2hex( random_bytes( (60 - (60 % 2))/2 )); //Se crea token unico
+
+            $sql = "UPDATE usuarios SET token = ? WHERE id_usuario = ?";
+            $params = array($this->token, $this->id_usuario);
+            return Database::executeRow($sql, $params);
+        }
+
+        public function checkToken()
+        {
+            $sql = "SELECT id_usuario FROM usuarios WHERE token = ?";
+            $params = array($this->token);
+            $data = Database::getRow($sql, $params);
+            if($data)
+            {
+                $this->id_usuario = $data['id_usuario'];
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public function changePass()
+        {
+            $hash = password_hash($this->password, PASSWORD_DEFAULT);
+            
+            $sql = "UPDATE usuarios SET password = ? WHERE id_usuario = ?";
+            $params = array($hash, $this->id_usuario);
+            return Database::executeRow($sql, $params);
+        }
     }
 ?>

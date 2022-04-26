@@ -76,6 +76,7 @@
             <html>
             <head>
                 <meta charset='utf-8'>
+                <meta name='google-signin-client_id' content='189852927728-7tnb8298hbvk1so59t64iu8kodt5mp1r.apps.googleusercontent.com'>
                 <title>$title</title>
                 <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
                 <link rel='stylesheet' href='../../web/css/login.css'>
@@ -91,6 +92,8 @@
         {
             print("
                 </div>
+                <script src='https://apis.google.com/js/platform.js' async defer></script>
+                <script src='../../web/js/auth.js'></script>
             </body>
             </html>
             ");
