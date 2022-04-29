@@ -155,13 +155,72 @@
         //-----------------------------------------------------------------------------------------------------------------
         //------------------------------------------ METODOS PARA EL CRUD -------------------------------------------------
         //-----------------------------------------------------------------------------------------------------------------
+        public function getPacientes()
+        {
+            $sql = "SELECT id_registro_animal, nombre FROM registro_animales";
+            $params = array();
+            return Database::getRows($sql, $params);
+        }
 
-        public function get(){}
+        public function getPropietario()
+        {
+            $sql = "SELECT p.nombres, p.apellidos FROM registro_animales ra 
+                INNER JOIN propietarios p ON ra.id_propietario = p.id_propietario 
+                WHERE ra.id_registro_animal = ?";
+            $params = array($this->id_registro_animal);
+            return Database::getRows($sql, $params);
+        }
 
-        public function create(){}
+        public function getConsultaForId()
+        {
+            $sql = "SELECT id_registro_animal, peso, diagnostico FROM consultas WHERE id_consulta = ?";
+            $params = array($this->id_consulta);
+            $consulta = Database::getRow($sql, $params);
+            if($consulta)
+            {
+                $this->id_registro_animal = $consulta['id_registro_animal'];
+                $this->peso = $consulta['peso'];
+                $this->diagnostico = $consulta['diagnostico'];
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-        public function update(){}
+        public function getConsultas()
+        {
+            $sql = "SELECT c.id_consulta, ra.nombre, CONCAT(p.nombres, ' ', p.apellidos) as propietario, c.fecha FROM consultas c 
+                INNER JOIN registro_animales ra ON c.id_registro_animal = ra.id_registro_animal
+                INNER JOIN propietarios p ON ra.id_propietario = p.id_propietario
+                WHERE c.estado = 1";
+            $params = array();
+            return Database::getRows($sql, $params);
+        }
 
-        public function delete(){}
+        public function create()
+        {
+            $today = new DateTime(null, new DateTimeZone(date_default_timezone_get()));
+            $sql = "INSERT INTO consultas( diagnostico, fecha, id_registro_animal, peso) VALUES (?, ?, ?, ?)";
+            $params = array($this->diagnostico, $today->format('y-m-d'), $this->id_registro_animal, $this->peso);
+            return Database::executeRow($sql, $params);
+        }
+
+        public function update()
+        {
+            $sql = "UPDATE consultas SET diagnostico = ?, id_registro_animal = ?, peso = ? WHERE id_consulta = ?";
+            $params = array($this->diagnostico, $this->id_registro_animal, $this->peso, $this->id_consulta);
+            return Database::executeRow($sql, $params);
+        }
+
+        public function delete()
+        {
+            $sql = "UPDATE consultas SET estado = 0 WHERE id_consulta = ?";
+            $params = array($this->id_consulta);
+            return Database::executeRow($sql, $params);
+        }
+
+        
     }
 ?>
