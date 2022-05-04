@@ -3,8 +3,14 @@ const buttonMenu = document.getElementById('btnMenu');
 const container = document.getElementById('contenedor')
 const pacienteInput = document.getElementById('paciente');
 const propietarioInput = document.getElementById('propietario');
+const propietarioSelect = document.getElementById('propietario');
+const serviciosSelect = document.getElementById('servicios');
+const TotalInput = document.getElementById('precio');
+
 
 //DECLARACION DE VARS
+var precioTotal = 0;
+var precios = [];
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
 
 //EVENTLISTENERS
@@ -16,6 +22,22 @@ if(pacienteInput !== null)
         theme: 'bootstrap4',
         width: 'style',
         templateSelection: setSelect
+    });
+}
+
+if(propietarioSelect !== null)
+{
+    $('#propietario').select2({
+        theme: 'bootstrap4',
+        width: 'style'
+    });
+}
+
+if(serviciosSelect !== null)
+{
+    $('#servicios').select2({
+        theme: 'bootstrap4',
+        width: 'style'
     });
 }
 
@@ -44,6 +66,7 @@ function setSelect(state)
     return state.text;
 }
 
+//FUNCION PARA OBTERNE AL PROPIETARIO SEGUN EL ID_REGISTRO_ANIMAL
 async function getPropietario(id_animal)
 {
     await fetch(`http://localhost/veterinaria/app/controllers/consultas/getPropietario_controller.php?id=${id_animal}`)
@@ -51,7 +74,6 @@ async function getPropietario(id_animal)
         .then( data => {
             if(data.length > 0)
             {
-                console.log(data);
                 propietarioInput.value =  `${data[0].nombres} ${data[0].apellidos}` 
             }
         });

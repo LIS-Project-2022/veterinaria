@@ -85,5 +85,12 @@
         }
 
         //METODOS PARA EL CRUD
+
+        public function getPrecioForId()
+        {
+            $sql = "SELECT precio FROM servicios WHERE id_servicio = ? AND estado = 1";
+            $params = array($this->id_servicio);
+            return Database::getRow($sql, $params);
+        }
     }
 ?>

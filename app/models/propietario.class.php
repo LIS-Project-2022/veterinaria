@@ -96,7 +96,12 @@
             return $this->estado;
         }
 
-        public function getPropietarios(){}
+        public function getPropietarios()
+        {
+            $sql = "SELECT id_propietario, CONCAT(nombres, ' ', apellidos) FROM propietarios WHERE estado = 1";
+            $params = array();
+            return Database::getRows($sql, $params);
+        }
 
         public function getPropietario()
         {
