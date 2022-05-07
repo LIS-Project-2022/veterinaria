@@ -109,7 +109,7 @@
             print("
                 <div class='$cols mb-3'>
                     <div class='form-floating'>
-                        <textarea id='$name' name='$name' class='form-control' placeholder='Leave a comment here' id='floatingTextarea2' style='height: 100px'>$value</textarea>
+                        <textarea id='$name' name='$name' class='form-control' style='height: 100px'>$value</textarea>
                         <label for='$name'>$label</label>
                     </div>
                 </div>

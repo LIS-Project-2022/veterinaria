@@ -85,12 +85,14 @@ class Receta extends Validator{
     }
     // MEDICAMENTOS
     public function setMedicamentos($value){
-        if($this->validateAlphabetic($value)){
-            $this->medicamentos;
-            return true;
-        }else{
-            return false;
-        }
+        $this->medicamentos = $value;
+        return true;
+        // if($this->validateAlphanumeric($value)){
+        //     $this->medicamentos;
+        //     return true;
+        // }else{
+        //     return false;
+        // }
     }
     public function getMedicamentos(){
         return $this->medicamentos;
@@ -118,12 +120,12 @@ class Receta extends Validator{
         $params = array($this->id_receta);
         $recetas = Database::getRow($query, $params);
         if($recetas){
-            $this->id_registro = $id_registro['id_registro_animal'];
-            $this->edad = $edad['edad'];
-            $this->peso = $peso['peso'];
-            $this->fecha = $fecha['fecha'];
-            $this->estado = $estado['estado'];
-            $this->medicamentos = $medicamentos['medicamentos'];
+            $this->id_registro = $recetas['id_registro_animal'];
+            $this->edad = $recetas['edad'];
+            $this->peso = $recetas['peso'];
+            $this->fecha = $recetas['fecha'];
+            $this->estado = $recetas['estado'];
+            $this->medicamentos = $recetas['medicamentos'];
             return true;
         }else{
             return false;
@@ -143,8 +145,8 @@ class Receta extends Validator{
     }
 
     public function delete(){
-        $query = "UPDATE recetas SET estado = ? WHERE id_receta = ?";
-        $params = array($this->estado, $this->id_receta);
+        $query = "UPDATE recetas SET estado = 0 WHERE id_receta = ?";
+        $params = array($this->id_receta);
         return Database::executeRow($query, $params);
     }
 }
