@@ -104,6 +104,18 @@
             ");
         }
 
+        // FUNCTION FOR CREATE TEXTAREA
+        public static function textArea($cols, $label, $name, $value){
+            print("
+                <div class='$cols mb-3'>
+                    <div class='form-floating'>
+                        <textarea id='$name' name='$name' class='form-control' style='height: 100px'>$value</textarea>
+                        <label for='$name'>$label</label>
+                    </div>
+                </div>
+            ");
+        }
+
         //FUNCION PARA GENERAR LA CARD DE LA PANTALLA DELETE.PHP
         public static function cardDelete($title, $message)
         {
