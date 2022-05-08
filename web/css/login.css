@@ -1,0 +1,46 @@
+/* General */
+body {
+    font-family: "Roboto", sans-serif;
+    background: rgb(91, 163, 167) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+img{
+    width: 100%;
+    height: 500px;
+}
+
+
+.card-container{
+    background: #FFF;
+    padding: 0;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario a{
+    text-decoration: none !important;
+    color:  black;
+}
+
+.formulario button{
+    width: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+    img{
+        width: 100%;
+        height: 300px;
+    }
+}
+  

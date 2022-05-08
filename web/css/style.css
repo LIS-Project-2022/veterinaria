@@ -1,13 +1,15 @@
+
 :root{
     --blue-dark: #293D55;
     --white: #FFFFFF;
     --grey: rgba(207, 206, 206, 1);
 }
 
-.dropdown-menu.show{
-    right: 0 !important;
-    left: inherit !important;
+.dropdown-menu.show {
+  right: 0 !important;
+  left: inherit !important;
 }
+
 
 header{
     position: sticky;
@@ -15,28 +17,28 @@ header{
 }
 
 .navbar-sav{
-    
     display: flex;
     justify-content: space-between;
     background: var(--grey);
     height: 60px;
 }
 
-.navbar-contain-title{
-    position: relative;
-    width: 300px;
-    background: var(--blue-dark);
-    display: flex;
-    align-items: center;
-    padding-left: 2.5rem;
+.navbar-contain-title {
+  position: relative;
+  width: 300px;
+  background: var(--blue-dark);
+  display: flex;
+  align-items: center;
+  padding-left: 2.5rem;
 }
 
-.navbar-title-sav{
-    font-size: 1.50rem;
-    text-decoration: none;
-    white-space: nowrap;
-    color: #FFFFFF;
+.navbar-title-sav {
+  font-size: 1.5rem;
+  text-decoration: none;
+  white-space: nowrap;
+  color: #ffffff;
 }
+
 
 .navbar-content-sav{
     width: calc(100% - 300px);
@@ -46,48 +48,48 @@ header{
     align-items: center;
 }
 
-.navbar-item-sav{
-    color: black;
-    text-decoration: none;
-    list-style: none;
+.navbar-item-sav {
+  color: black;
+  text-decoration: none;
+  list-style: none;
 }
 
-.navbar-menu-sav{
-    font-size: 2rem;
-    margin-left: 0.5rem;
+.navbar-menu-sav {
+  font-size: 2rem;
+  margin-left: 0.5rem;
 }
 
-.navbar-dropdown-sav
-{
-    margin-right: 1.5rem;
-    font-size: 1.5rem;
+.navbar-dropdown-sav {
+  margin-right: 1.5rem;
+  font-size: 1.5rem;
 }
 
-.sidenav-sav{
-    width: 300px;
-    top: 60px;
-    background: var(--blue-dark);
+.sidenav-sav {
+  width: 300px;
+  top: 60px;
+  background: var(--blue-dark);
 }
 
-.sidenav-list-sav{
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.sidenav-list-sav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.sidenav-item-sav{
-    position: relative;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
-    color: white;
-    padding-left: 1.5rem;
+.sidenav-item-sav {
+  position: relative;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: white;
+  padding-left: 1.5rem;
 }
 
-.sidenav-item-sav.active{
-    background: var(--grey);
+.sidenav-item-sav.active {
+  background: var(--grey);
 }
+
 
 .sidenav-item-sav a{
     text-decoration: none !important;
@@ -100,102 +102,99 @@ header{
     margin-right: 1.5rem;
 }
 
-.container-sav{
-    padding-left: 0px;
-    transition: padding 0.5s ease-in-out;
+.container-sav {
+  padding-left: 0px;
+  transition: padding 0.5s ease-in-out;
 }
 
-.container-sav.active{
-    padding-left: 300px;
-    transition: padding 0.5s ease-in-out;
+.container-sav.active {
+  padding-left: 300px;
+  transition: padding 0.5s ease-in-out;
 }
 
-.container-btn-round-sav{
+.container-btn-round-sav {
+  position: fixed;
+  right: calc(100vw - 95%);
+  bottom: calc(100vh - 93%);
+  width: 50px;
+  height: 50px;
+}
+
+.container-btn-round-sav a {
+  text-decoration: none;
+}
+
+.btn-round-sav {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--blue-dark);
+}
+
+.btn-round-sav i {
+  display: flex;
+  color: var(--white);
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+a.edit {
+  background: #31be00;
+  color: #ffffff;
+}
+
+a.delete {
+  background: #ff5353;
+  color: #ffffff;
+}
+
+a.print {
+  background: #e3da00;
+  color: #ffffff;
+}
+
+a.watch {
+  background: #0092e3;
+  color: #ffffff;
+}
+
+.btn.btn-agregar {
+  background: var(--blue-dark);
+  color: #ffffff;
+}
+
+.btn.btn-eliminar {
+  background: #ff5353;
+  color: #ffffff;
+}
+
+.btn.btn-cancelar {
+  background: #d3d3d3;
+  color: #ffffff;
+}
+
+.container-delete-sav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px);
+  width: 100%;
+}
+
+.card-sav {
+  background: var(--blue-dark);
+  color: var(--white);
+}
+
+@media only screen and (max-width: 600px) {
+  .container-btn-round-sav {
     position: fixed;
     right: calc(100vw - 95%);
-    bottom: calc(100vh - 93%);
+    bottom: 20px;
     width: 50px;
     height: 50px;
-}
-
-.container-btn-round-sav a{
-    text-decoration: none;
-}
-
-.btn-round-sav{
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: var(--blue-dark);
-}
-
-.btn-round-sav i{
-    display: flex;
-    color: var(--white);
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-}
-
-
-a.edit{
-    background: #31BE00;
-    color:#FFFFFF;
-}
-
-a.delete{
-    background: #FF5353;
-    color:#FFFFFF;
-}
-
-a.print{
-    background: #E3DA00;
-    color:#FFFFFF;
-}
-
-a.watch{
-    background: #0092E3;
-    color:#FFFFFF;
-}
-
-.btn.btn-agregar{
-    background: var(--blue-dark);
-    color: #FFFFFF;
-}
-
-.btn.btn-eliminar{
-    background: #FF5353;
-    color:#FFFFFF;
-}
-
-.btn.btn-cancelar{
-    background: #D3D3D3;
-    color: #FFFFFF;
-}
-
-.container-delete-sav{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 100px);
-    width: 100%;
-}
-
-.card-sav{
-    background: var(--blue-dark);
-    color: var(--white);
-}
-
-
-@media only screen and (max-width: 600px)
-{
-    .container-btn-round-sav{
-        position: fixed;
-        right: calc(100vw - 95%);
-        bottom: 20px;
-        width: 50px;
-        height: 50px;
-    }
+  }
 }
