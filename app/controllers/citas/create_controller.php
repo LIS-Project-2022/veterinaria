@@ -3,8 +3,6 @@
     require_once('../../app/middleware/auth.class.php');
     try
     {
-        //Verifica si es administrador
-        Auth::checkAdmin();
 
         $citas = new Cita;
         

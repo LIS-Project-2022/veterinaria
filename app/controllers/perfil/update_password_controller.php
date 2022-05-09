@@ -3,9 +3,7 @@
     try
     {
         $usuario = new Usuario;
-        // util solo mientras no esta la autenticación
-        $_SESSION["idUser"] = '1';
-        $idUser = $_SESSION['idUser'];
+        $idUser = $_SESSION['auth']['id_usuario'];
         if($idUser != ''){
             $tiposUsuario = $usuario->getTiposUsuario();
             if(!$usuario->setIdUsuario($idUser))

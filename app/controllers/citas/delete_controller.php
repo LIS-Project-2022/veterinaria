@@ -4,8 +4,6 @@
 
     try
     {
-        //Verifica si es administrador
-        Auth::checkAdmin();
 
         $citas = new Cita;
         if(!isset($_GET['id']))
