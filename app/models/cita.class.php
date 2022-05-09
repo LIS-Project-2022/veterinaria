@@ -133,7 +133,7 @@
         //METODO SET DE ESTADO
         public function setEstado($value)
         {
-            if($this->validateFecha($value))
+            if($this->validateEstado($value))
             {
                 $this->estado = $value;
                 return true;

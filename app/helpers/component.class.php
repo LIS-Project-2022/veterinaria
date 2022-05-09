@@ -27,6 +27,35 @@
             ");
         }
 
+        //FUNCION PARA CREAR SELECT MULTIPLE DINAMICOS
+        public static function showSelectMultiple($label, $name, $value, $data){
+            print("
+                <div class='col-6 mb-3'>
+                    <label for='$name' class='form-label'>$label</label>
+                    <select name='$name".'[]'."' id='$name' class='form-select' multiple='multiple'>
+            ");
+            if($data)
+            {    
+                foreach($data as $row){
+
+                    if(in_array($row[0], $value))
+                    {
+                        print("<option value='$row[0]' selected>$row[1]</option>");
+                    }
+                    else
+                    {
+                        print("<option value='$row[0]'>$row[1]</option>");
+                    }
+                }
+            }else{
+                print("<option value='' disabled selected>No hay opciones disponibles</option>");
+            }
+            print("
+                    </select>
+                </div>
+            ");
+        }
+
         //FUNCION PARA CREAR TABLA DINAMICAS
         public static function dataTable($headers, $data)
         {

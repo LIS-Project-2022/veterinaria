@@ -21,6 +21,9 @@
                 <link rel='stylesheet' href='../../web/css/style.css'>
                 <link rel='stylesheet' href='https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css'>
                 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css'>
+                <link href='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css' rel='stylesheet' />
+                <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css'>
+
                 <script src='../../web/js/sweetalert.min.js'></script>
                 <title>$title</title>
             </head>
@@ -44,6 +47,7 @@
             <script src='../../web/js/jquery-3.5.1.min.js'></script>
             <script src='../../web/js/jquery.dataTables.min.js'></script>
             <script src='https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js'></script>
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js'></script>
             <script src='../../web/js/app.js'></script>
             <script>
                 $(document).ready(function() {

@@ -204,7 +204,7 @@
 		//FUNCION PARA VALIDAR DECIMALES
 		public function validateDecimal($value)
 		{
-			if(preg_match("/^[0-9]+(?:\,[0-9]{1,2})?$/", $value))
+			if(preg_match("/^[0-9]+(?:\.[0-9]{1,2})?$/", $value))
 			{
 				return true;
 			}
