@@ -33,7 +33,16 @@
         //METODO GET DE ID_CITA
         public function getIdCita()
         {
-            return $this->id_cita;
+            $query = "SELECT citas.id_cita, registro_animales.nombre,citas.fecha,citas.hora,tipos_cita.tipo_cita FROM citas INNER JOIN registro_animales on citas.id_registro_animal = registro_animales.id_registro_animal INNER JOIN tipos_cita on citas.id_tipo_cita = tipos_cita.id_tipo_cita";
+            $params = array();
+            return Database::getRows($query, $params);
+        }
+
+        public function getCitabyID()
+        {
+            $query = "SELECT id_cita, id_registro_animal, fecha, hora, id_tipo_cita, estado FROM citas";
+            $params = array();
+            return Database::getRows($query, $params);
         }
         //FIN DE METODO GET DE ID_CITA
 
@@ -56,7 +65,10 @@
         //METODO GET DE ID_REGISTRO_ANIMAL
         public function getIdregistroAnimal()
         {
-            return $this->id_registro_animal;
+            // return $this->id_registro_animal;
+            $query = "SELECT id_registro_animal, nombre FROM registro_animales WHERE estado = 1";
+            $params = array();
+            return Database::getRows($query, $params);
         }
         //FIN DE METODO GET DE ID_REGISTRO_ANIMAL
 
@@ -87,7 +99,8 @@
         //METODO SET DE HORA
         public function setHora($value)
         {
-            if($this->validateFecha($value))
+            // if($this->validateHora($value))
+            if($value)
             {
                 $this->hora = $value;
                 return true;
@@ -108,7 +121,7 @@
 
         //------------------------------------------------------ ID_TIPO_CITA -------------------------------------------------
         //METODO SET DE ID_TIPO_CITA
-        public function setIdTipoFecha($value)
+        public function setIdTipoCita($value)
         {
             if($this->validateId($value))
             {
@@ -123,9 +136,11 @@
         //FIN DE METODO SET DE ID_TIPO_CITA
 
         //METODO GET DE ID_TIPO_CITA
-        public function getIdTipoFecha()
+        public function getIdTipoCita()
         {
-            return $this->id_tipo_cita;
+            $query = "SELECT id_tipo_cita, tipo_cita FROM tipos_cita WHERE estado = 1";
+            $params = array();
+            return Database::getRows($query, $params);
         }
         //FIN DE METODO GET DE ID_TIPO_CITA
 
@@ -158,10 +173,23 @@
 
         public function get(){}
 
-        public function create(){}
+        public function create(){
+            $query = "INSERT citas( id_registro_animal, fecha, hora, id_tipo_cita, estado) 
+            VALUES (?, ?, ?, ?, ?)";
+            $params = array($this->id_registro_animal, $this->fecha, $this->hora, $this->id_tipo_cita, $this->estado);
+            return Database::executeRow($query, $params);
+        }
 
-        public function update(){}
+        public function update(){
+            $query = "UPDATE citas SET id_registro_animal = ?, fecha = ?, hora = ?, id_tipo_cita = ? WHERE id_cita = ?";
+            $params = array($this->id_registro_animal, $this->fecha, $this->hora, $this->id_tipo_cita, $this->id_cita);
+            return Database::executeRow($query, $params);
+        }
 
-        public function delete(){}
+        public function delete(){
+            $query = "DELETE FROM citas WHERE id_cita = ?";
+            $params = array($this->id_cita);
+            return Database::executeRow($query, $params);
+        }
     }
 ?>

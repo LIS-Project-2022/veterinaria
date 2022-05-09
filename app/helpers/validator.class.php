@@ -239,5 +239,18 @@
 				return false;
 			}
 		}
+
+		//FUNCION PARA VALIDAR HORA
+		public function validateHora($value)
+		{
+			if(preg_match("/^(?:2[0-4]|[01][1-9]|10):([0-5][0-9])$/", $value))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 	}
 ?>
