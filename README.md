@@ -14,7 +14,7 @@ Todos los colaboradores son el grupo teórico 02
 - [Mockups](https://www.figma.com/file/n5AbKDBX6R05u9d3xuvo8I/Sistema-de-Veterinaria?node-id=0%3A1)
 - [Documento de Fase 1](https://drive.google.com/drive/folders/1TV6U9aO6cQiitYZT5icuUxAPKyqwYegV?usp=sharing)
 - [Manual de Usuario](https://drive.google.com/drive/folders/1TV6U9aO6cQiitYZT5icuUxAPKyqwYegV?usp=sharing)
-- [Manual de Tecnico](https://drive.google.com/drive/folders/1TV6U9aO6cQiitYZT5icuUxAPKyqwYegV?usp=sharing)
+- [Manual Técnico](https://drive.google.com/file/d/1dni-xT9wx3uoq3E2BjA77iHHcE4uC0bi/view?usp=sharing)
 - [Video Fase 1](https://drive.google.com/drive/folders/1TV6U9aO6cQiitYZT5icuUxAPKyqwYegV?usp=sharing)
 
 ### Licencia
