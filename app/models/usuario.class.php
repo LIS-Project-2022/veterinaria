@@ -214,7 +214,7 @@
 
         public function getUsuarios()
         {
-            $query = "SELECT id_usuario, nombres, apellidos, correo, usuario, telefono FROM usuarios WHERE estado = 1";
+            $query = "SELECT id_usuario, nombres, apellidos, correo, usuario, telefono FROM usuarios WHERE estado = 1 AND id_usuario != '".$_SESSION['auth']['id_usuario']."'";
             $params = array();
             return Database::getRows($query, $params);
         }

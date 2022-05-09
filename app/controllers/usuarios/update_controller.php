@@ -12,6 +12,10 @@
         {
             Page::showMessage(2, 'Seleccione un usuario', 'index.php');
         }
+        if($_GET['id'] == $_SESSION['auth']['id_usuario'])
+        {
+            Page::showMessage(2, 'El id de usuario no es valido', 'index.php');
+        }
         else if(!$usuario->setIdUsuario($_GET['id']))
         {
             Page::showMessage(2, 'El id de usuario no es valido', 'index.php');

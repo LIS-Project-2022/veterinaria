@@ -171,7 +171,24 @@
         //------------------------------------------ METODOS PARA EL CRUD -------------------------------------------------
         //-----------------------------------------------------------------------------------------------------------------
 
-        public function get(){}
+        public function getForId()
+        {
+            $sql = "SELECT id_cita, id_registro_animal, fecha, hora, id_tipo_cita FROM citas WHERE id_cita = ?";
+            $params = array($this->id_cita);
+            $cita = Database::getRow($sql, $params);
+            if($cita)
+            {
+                $this->id_registro_animal = $cita['id_registro_animal'];
+                $this->fecha = $cita['fecha'];
+                $this->hora = $cita['hora'];
+                $this->id_tipo_cita = $cita['id_tipo_cita'];
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public function create(){
             $query = "INSERT citas( id_registro_animal, fecha, hora, id_tipo_cita, estado) 
